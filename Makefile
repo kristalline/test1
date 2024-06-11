@@ -9,7 +9,7 @@ start-h:
 	node src/bin/gendiff.js -h
 
 start-v:
-	npx node src/bin/gendiff.js -v
+	npx node src/bin/gendiff.js -V
 
 
 
