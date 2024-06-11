@@ -3,7 +3,7 @@ install:
 	npm install
 
 start:
-	npx node src/bin/gendiff.js
+	npx node src/bin/gendiff.js ./misc/file1.json ./misc/file1.json
 
 start-h:
 	node src/bin/gendiff.js -h

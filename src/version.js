@@ -1,5 +1,5 @@
 //const fs = require('fs');
-import fs from 'fs';
+import fs from 'node:fs';
 const data = fs.readFileSync('./package.json',
     { encoding: 'utf8', flag: 'r' });
 
