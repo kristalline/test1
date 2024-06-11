@@ -1,0 +1,28 @@
+{
+  "name": "gendiff",
+  "version": "0.1.0",
+  "description": "Compares two configuration files and shows a difference",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "package": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evoly/frontend-project-lvl2.git"
+  },
+  "author": "Svetlana Semenko",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "globals": "^15.4.0"
+  }
+}
