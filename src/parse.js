@@ -27,14 +27,30 @@ const data = (pathToFile) => {
         return JSON.parse(fs.readFileSync(pathToFile,{ encoding: 'utf8', flag: 'r' }));
     }
     if (extension === 'yml') {
-        return yaml.load(fs.readFileSync(pathToFile, 'utf8'));        
+        const data = yaml.load(fs.readFileSync(pathToFile, 'utf8'));
+        const result = {};
+        [...data].map((el) => {
+            const key = Object.keys(el);
+            result[key] = el[key];
+        })
+        return result;
     }
 
     throw Error ('wrong file extension');
         
 };
 
-//console.log(typeof data('../misc/yaml1.yml'));
+const test = (arr) => {
+    const result = {};
+    console.log('arr', arr, typeof arr);
+    [...arr].map( (el) => {
+    const key = Object.keys(el);
+    result[key] = el[key];
+    });    
+    return result;
+}
+
+//console.log(data('../misc/yaml1.yml'));
 
 
 
