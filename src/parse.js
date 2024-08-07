@@ -1,25 +1,10 @@
 import fs from 'node:fs';
 import yaml from 'js-yaml';
 
-//const validateExt = (file) => file.endsWith('.json') || file.endsWith('.yaml');
 const validateExt = (file) => {
     const ext = file.endsWith('.json') ? 'json' : file.endsWith('.yml') ? 'yml' : 'err';
     return ext;
 };
-
-//TODO
-/*const extension = {
-    json(path) {
-        return fs.readFileSync(path,
-        { encoding: 'utf8', flag: 'r' }); },
-    yml(path) {
-        yaml.load(fs.readFileSync(path, 'utf8'));
-    },
-    err: ''
-}
-    */
-
-console.log(validateExt('/misc/yaml1.yml'));
 
 const data = (pathToFile) => {
     const extension = validateExt(pathToFile);
@@ -36,22 +21,10 @@ const data = (pathToFile) => {
         return result;
     }
 
-    throw Error ('wrong file extension');
-        
+    throw Error ('wrong file extension');        
 };
 
-const test = (arr) => {
-    const result = {};
-    console.log('arr', arr, typeof arr);
-    [...arr].map( (el) => {
-    const key = Object.keys(el);
-    result[key] = el[key];
-    });    
-    return result;
-}
-
-//console.log(data('../misc/yaml1.yml'));
-
-
-
 export default data;
+
+
+//TODO: json validarion ?
