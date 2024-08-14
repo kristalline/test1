@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import yaml from 'js-yaml';
 
 const validateExt = (file) => {
-    const ext = file.endsWith('.json') ? 'json' : file.endsWith('.yml') ? 'yml' : 'err';
+    const ext = file.endsWith('.json') ? 'json' : file.endsWith('.yml') || file.endsWith('.yaml') ? 'yml' : 'err';
     return ext;
 };
 
@@ -14,6 +14,8 @@ const data = (pathToFile) => {
     if (extension === 'yml') {
         const data = yaml.load(fs.readFileSync(pathToFile, 'utf8'));
         const result = {};
+        if (!Array.isArray(data)) return data;
+        
         [...data].map((el) => {
             const key = Object.keys(el);
             result[key] = el[key];
@@ -26,5 +28,7 @@ const data = (pathToFile) => {
 
 export default data;
 
+//console.log(data('./misc/file1.json'));
 
-//TODO: json validarion ?
+
+//TODO: 1. json validation ?

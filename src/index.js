@@ -1,30 +1,36 @@
 const isObject = (value) => value && typeof value === 'object' && !Array.isArray(value);
 
 const genDiff = (a, b) => {
-    const result = {};
+    const result = [];
     const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
     [...keys].map(k => {
+        const obj = { key: k };
         if (isObject(a[k]) && isObject(b[k])) {
-            result[`  ${k}`] = genDiff(a[k], b[k]);
+            obj.children = genDiff(a[k], b[k]);
         } else {
             if (a[k] === b[k]) {
-                result[`  ${k}`] = a[k];
+                obj.value = a[k];
+                obj.type = 'unchanged'
             } else {
                 if (Object.hasOwn(a, k) && !Object.hasOwn(b, k)) {
-                    result[`- ${k}`] = a[k]; // del
+                    obj.value = a[k]; // del
+                    obj.type = 'deleted'
                 };
                 if (Object.hasOwn(b, k) && !Object.hasOwn(a, k)) {
-                    result[`+ ${k}`] = b[k]; // add
+                    obj.value = b[k]; // add
+                    obj.type = 'added'
                 }
                 if (Object.hasOwn(b, k) && Object.hasOwn(a, k)) {
-                    result[`- ${k}`] = a[k];
-                    result[`+ ${k}`] = b[k]; // change
+                    obj.value1 = a[k];
+                    obj.value2 = b[k]; // change
+                    obj.type = 'changed'
                 }
             }
-
-        }
+        };
+        result.push(obj);
     });
+
     return result;
-}
+};
 
 export default genDiff;
