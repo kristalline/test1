@@ -13,7 +13,7 @@ jobs:
       - run: npx eslint .
       # Запускаем jest
       - name: Test & publish code coverag
-        uses: paambaati/codeclimate-action@v8.0.0e
+        uses: paambaati/codeclimate-action@v8.0.0
         env:
           CC_TEST_REPORTER_ID: 7c330572e3a57222f4eba1dafed5a64e3468744fb7585aeb6209eb4dde6f21d9
         with:
