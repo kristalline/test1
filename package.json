@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest",
+    "test": "jest --silent=false",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build",
     "package": ""
@@ -22,9 +22,10 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.4.0",
-    "eslint": "^9.4.0",
-    "globals": "^15.4.0",
+    "@eslint/js": "^9.9.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "globals": "^15.9.0",
     "jest": "^29.7.0"
   }
 }
